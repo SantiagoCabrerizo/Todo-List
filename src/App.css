@@ -1,0 +1,61 @@
+.vh {
+    min-height: 100dvh;
+}
+
+#todoList {
+    background: rgba(70, 51, 46, .1);
+    border-radius: 50px;
+    height: fit-content;
+    backdrop-filter: blur(2px);
+}
+
+.completed {
+    text-decoration: line-through #f59115 2px;
+}
+
+.icon {
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.icon:hover {
+    color: #f59115;
+}
+
+.btn {
+    background-color: #f59115;
+}
+
+.btn:hover {
+    background-color: #d17f1b;
+}
+
+.form-control:focus {
+    border-color: #f59115;
+    box-shadow: none;
+}
+
+/*----CHECK----*/
+.form-check-input {
+    border: solid 1px #f59115;
+}
+
+.form-check-input:focus {
+    box-shadow: none;
+    border-color: #f59115;
+}
+
+.form-check-input:checked {
+    box-shadow: none;
+    background-color: #f59115;
+    border: none;
+}
+
+/*----Font----*/
+@font-face {
+    font-family: givonic-semibold;
+    src: url(/public/Givonic-SemiBold.ttf);
+}
+.font-semibold{
+    font-family: givonic-semibold;
+}
