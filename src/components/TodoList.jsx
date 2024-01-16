@@ -1,13 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import TodoItem from './TodoItem'
 import TodoForm from './TodoForm';
 import { v4 as uuidv4 } from 'uuid';
 import TodoEdit from './TodoEdit';
 uuidv4()
 
+const getLocalStorage = () => {
+    let todo = localStorage.getItem("todo")
+    if (todo) {
+        return (todo = JSON.parse(localStorage.getItem("todo")))
+    } else {
+        return [];
+    }
+}
+
 const TodoList = () => {
 
-    const [todos, setTodos] = useState([])
+    const [todos, setTodos] = useState(getLocalStorage())
 
     const add = (todo) => {
         setTodos([...todos, {
@@ -18,6 +27,10 @@ const TodoList = () => {
         }])
         console.log(todos)
     }
+
+    useEffect(() => {
+        localStorage.setItem("todo", JSON.stringify(todos))
+    }, [todos])
 
     const checkTodo = id => {
         setTodos(todos.map(todo => todo.id === id ? { ...todo, completed: !todo.completed } : todo))
@@ -32,7 +45,7 @@ const TodoList = () => {
     }
 
     const editTask = (task, id) => {
-        setTodos(todos.map(todo => todo.id === id ? {...todo, task, isEditing: !todo.isEditing} : todo))
+        setTodos(todos.map(todo => todo.id === id ? { ...todo, task, isEditing: !todo.isEditing } : todo))
     }
 
     return (
